@@ -17,12 +17,14 @@ export default function App() {
   }, [todos]);
 
   function addTodo(title) {
-    setTodos((currentTodos) => {
-      return [
-        ...currentTodos,
-        { id: crypto.randomUUID(), title, completed: false },
-      ];
-    });
+    if (title !== "") {
+      setTodos((currentTodos) => {
+        return [
+          ...currentTodos,
+          { id: crypto.randomUUID(), title, completed: false },
+        ];
+      });
+    }
   }
 
   function toggleTodo(id, completed) {
