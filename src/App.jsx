@@ -5,6 +5,7 @@ import { TodoList } from "./components/TodoList";
 
 export default function App() {
   const [todos, setTodos] = useState(() => {
+    // checks for data in local storage
     const localValue = localStorage.getItem("ITEMS");
     if (localValue == null) {
       return [];
@@ -12,6 +13,7 @@ export default function App() {
     return JSON.parse(localValue);
   });
 
+  // stores todos in local storage each time "todos" changes
   useEffect(() => {
     localStorage.setItem("ITEMS", JSON.stringify(todos));
   }, [todos]);
